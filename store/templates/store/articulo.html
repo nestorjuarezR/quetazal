@@ -1,0 +1,112 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+<body>
+
+    {% block content %}
+    <div class="container">
+        <h5>Tags:
+            
+            {% for tag in articulo.tags.all %}
+            <a href="{% url 'tag_listado' tag.slug %}" class="chip">{{ tag.name }}</a>
+
+            {% endfor %}
+                
+        </h5>
+        <div class="divider"></div>
+
+
+        <div class="product-details">
+            <div class="row ">
+                <div class="col l6 m6 s12">
+                    <img class="responsive-img materialboxed" width="650" src="{{ articulo.imagen.url }}"
+                        alt="imagen_producto">
+                </div>
+                <div class="col l6 m6 s12">
+                    <div class="valign">
+                        <h5 class="center-align">{{ articulo.titulo|capfirst }}</h5>
+                        <br>
+                        <hr>
+                        <br>
+                        <p>{{ articulo.descripcion }}</p>
+                        <p>Precio: ${{ articulo.precio }}</p>
+                        <p class="grey-text text-lighten-1">SKU: 1697</p>
+                        <div class="col s12 m6 l6 valign-wrapper ">
+                            <label for="select" class="black-text">Cantidad</label>
+                            <select id="select" class="browser-default">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="col s12 m6 l6 valign-wrapper">
+                            <a class="waves-effect waves-light btn"><i
+                                    class="material-icons right">add_shopping_cart</i>Agregar </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Iconos -->
+        <div class="divider"></div>
+        <div class="section row">
+            <div class="col l12 m12 s12">
+                <div class="col l3 m6 s6  center-align">
+                    <i class="medium material-icons green-text">where_to_vote</i>
+                    <p>100 % Plata mexicana</p>
+                </div>
+                <div class="col l3  m6 s6 center-align">
+                    <i class="medium material-icons black-text">
+                        <span class="material-symbols">
+                            volunteer_activism
+                        </span></i>
+                    <p>Hecho con manos mexicanas</p>
+                </div>
+                <div class="col l3 m6 s6 center-align">
+                    <i class="medium material-icons teal-text text-darken-3">
+                        <span class="material-symbols-outlined">
+                            credit_score
+                        </span>
+                    </i>
+                    <p>Compras seguras</p>
+                </div>
+                <div class="col l3 m6 s6 center-align">
+                    <i class="medium material-icons teal-text text-darken-3">
+                        <span class="material-symbols-outlined">
+                            credit_score
+                        </span>
+                    </i>
+                    <p>Compras seguras</p>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h4>Productos Relacionados</h4>
+        <div class="row">
+            <div class="col l12">
+                <div class="col s12 m6 l4">
+                    <div class="card small hoverable">
+                        <div class="card-image">
+                            <img class="responsive-img" id="card-image" src="{{ articulo.imagen.url }}">
+                        </div>
+                        <div class=" card-content">
+                            <span class=" card-title">{{articulo.titulo|truncatewords:10}}</span>
+                        </div>
+                        <div class="card-action">
+                            <a class="waves-effect waves-light btn" href="{{ articulo.get_absolute_url }}">Entrar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    {% endblock content %}
+
+</body>

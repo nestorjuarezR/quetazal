@@ -1,10 +1,18 @@
 from django.db import models
 from django.urls import reverse
+from taggit.managers import TaggableManager
+
+
 
 #Custom Model Manager.
 class CategoriaManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status=Categoria.Status.ACTIVA)
+
+
+class ArticuloManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(disponible=True)
 
 
 
@@ -20,6 +28,9 @@ class Categoria(models.Model):
     status = models.CharField(max_length=2,
                                                 choices = Status.choices,
                                                 default = Status.ACTIVA)
+    imagen = models.ImageField(upload_to='categorias',
+                                                            blank=True,
+                                                            null=True)
     
     objects = models.Manager()   #Manager por defecto
     activas = CategoriaManager() #Custom manager
@@ -33,6 +44,8 @@ class Categoria(models.Model):
     def get_absolute_url(self):
         return reverse('articulos_categoria',
                        args=[str(self.slug)])
+
+
         
 
 class Articulo(models.Model):
@@ -43,10 +56,23 @@ class Articulo(models.Model):
     slug = models.SlugField(max_length=250)
     descripcion = models.CharField(max_length=240)
     precio = models.IntegerField()
+    imagen = models.ImageField(upload_to='articulos',
+                                                            blank=True,
+                                                            null=True)
+    tags = TaggableManager()
+    disponible = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['-titulo']
 
     def __str__(self):
         return self.titulo
+    
+    def get_absolute_url(self):
+        return reverse('articulo_detalle',
+                       args=[self.id,
+                                    self.slug])
+    
+    objects = models.Manager()   #Manager por defecto
+    disponibles = ArticuloManager() #Custom manager
 

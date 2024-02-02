@@ -21,6 +21,8 @@
       full_width: true,
     });
     $('.tabs').tabs();
+    $('.carousel').carousel();
+
     $(document).ready(function () {
       $('.materialboxed').materialbox();
     });
