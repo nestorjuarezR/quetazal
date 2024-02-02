@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Categoria, Articulo
 from taggit.models import Tag
+from django.db.models import Count
 
 
 # Create your views here.
@@ -27,10 +28,19 @@ def articulo(request, id, slug):
     articulo = get_object_or_404(Articulo,
                                                                 id = id,
                                                                 slug = slug)
-    
+
+    #Lista de articulos similares
+    articulos_tags_all = articulo.tags.values_list('id', flat=True)
+    articulos_similares = Articulo.disponibles.filter(
+                                                                                            tags__in=articulos_tags_all).exclude(id=articulo.id)
+    articulos_similares = articulos_similares.annotate(same_tags = Count('tags')).order_by('-same_tags', '-titulo')[:3]
+
     return render(request, 
                                 'store/articulo.html',
-                                {'articulo': articulo})
+                                {'articulo': articulo,
+                                 'articulos_similares': articulos_similares})
+
+
 
 def tag_listado(request, tag_slug=None):
     articulos = Articulo.disponibles.all()

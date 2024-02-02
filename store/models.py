@@ -31,6 +31,7 @@ class Categoria(models.Model):
     imagen = models.ImageField(upload_to='categorias',
                                                             blank=True,
                                                             null=True)
+    creacion = models.DateTimeField(auto_now_add=True)
     
     objects = models.Manager()   #Manager por defecto
     activas = CategoriaManager() #Custom manager
@@ -57,10 +58,13 @@ class Articulo(models.Model):
     descripcion = models.CharField(max_length=240)
     precio = models.IntegerField()
     imagen = models.ImageField(upload_to='articulos',
+                                                            default='articulos/articulo.jpg',
                                                             blank=True,
                                                             null=True)
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
     disponible = models.BooleanField(default=True)
+    creacion = models.DateTimeField(auto_now_add=True)
+
 
     class Meta:
         ordering = ['-titulo']

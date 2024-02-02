@@ -5,15 +5,23 @@
 
     {% block content %}
     <div class="container">
+
+
+        {% if articulo.tags.all  %}
+
         <h5>Tags:
-            
             {% for tag in articulo.tags.all %}
             <a href="{% url 'tag_listado' tag.slug %}" class="chip">{{ tag.name }}</a>
-
             {% endfor %}
-                
         </h5>
+
         <div class="divider"></div>
+
+        {% endif %}
+
+
+
+
 
 
         <div class="product-details">
@@ -46,6 +54,9 @@
                         </div>
                     </div>
                 </div>
+
+
+
             </div>
         </div>
 
@@ -85,11 +96,15 @@
             </div>
         </div>
         <div class="divider"></div>
-        <h4>Productos Relacionados</h4>
+
+
+        <h4>Productos relacionados</h4>
         <div class="row">
             <div class="col l12">
+
+                {% for articulo in articulos_similares %}
                 <div class="col s12 m6 l4">
-                    <div class="card small hoverable">
+                    <div class="card medium hoverable">
                         <div class="card-image">
                             <img class="responsive-img" id="card-image" src="{{ articulo.imagen.url }}">
                         </div>
@@ -101,6 +116,11 @@
                         </div>
                     </div>
                 </div>
+                {% empty %}
+                <p>No hay articulos relacionados</p>
+                {% endfor %}
+
+
             </div>
         </div>
 
