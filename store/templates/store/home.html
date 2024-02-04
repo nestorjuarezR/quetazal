@@ -3,105 +3,313 @@
 
 <body>
 
-    {% block content %}
-    <div class="slider">
-        <ul class="slides">
-            <li>
-                <img src="{% static 'store/img/slider_01.jpg' %}" class="responsive-img"> <!-- random image -->
-                <div class="caption center-align">
-                    <h3>This is our big Tagline!</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
-                <img src="{% static 'store/img/slider_02.jpg' %}" class="responsive-img"> <!-- random image -->
-                <div class="caption left-align">
-                    <h3>Left Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-            <li>
-                <img src="{% static 'store/img/slider_03.jpg' %}" class="responsive-img"> <!-- random image -->
-                <div class="caption right-align">
-                    <h3>Right Aligned Caption</h3>
-                    <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                </div>
-            </li>
-        </ul>
+  {% block Header %}
+  <!-- Slider -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
     </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'store/img/Anillos_hoja.jpg' %}" class="d-block w-100 slider-image" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>This is our big Tagline!</h5>
+          <p>Here's our small slogan.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'store/img/anillos_rosa.jpg' %}" class="d-block w-100 slider-image" alt="...">
+        <div class="carousel-caption d-none d-md-block text-start">
+          <h5>Left Aligned Caption</h5>
+          <p>Here's our small slogan.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'store/img/anillo_mesa.jpg' %}" class="d-block w-100 slider-image" alt="...">
+        <div class="carousel-caption d-none d-md-block text-end">
+          <h5>Right Aligned Caption</h5>
+          <p>Here's our small slogan.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev d-none" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next d-none" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  {% endblock Header %}
 
-    <div class="col s12">
-        <ul class="tabs center-align">
-            <li class="tab col s3 white-text"><a class="white-text " href="#test1">Mas Vendido</a></li>
-            <li class="tab col s3"><a class="active white-text" href="#test2">Promociones</a></li>
-            <li class="tab col s3 "><a class="white-text " href="#test3">Hombre</a></li>
-            <li class="tab col s3"><a class="white-text " href="#test4">Mujer</a></li>
-        </ul>
-    </div>
-    <div id="test1" class="container section">
-        <div class="row">
-            <div class="col s12 m7 l4">
-              <div class="card medium">
-                <div class="card-image">
-                  <img src="{%static 'store/img/pulsera.jpg' %}">
-                  <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
-                </div>
-              </div>
-            </div>
-          </div>
-    </div>
+  {% block content %}
 
-    <div id="test2" class="container section">
+
+  <!-- Categorias -->
+
+  <!-- Categorias-Promociones -->
+  <div class="">
+    <ul class="nav nav-tabs justify-content-center container-promociones " id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active text-white" id="test1-tab" data-bs-toggle="tab" data-bs-target="#test1"
+          type="button" role="tab" aria-controls="test1" aria-selected="true">Mas Vendido</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link text-white" id="test2-tab" data-bs-toggle="tab" data-bs-target="#test2" type="button"
+          role="tab" aria-controls="test2" aria-selected="false">Promociones</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link text-white" id="test3-tab" data-bs-toggle="tab" data-bs-target="#test3" type="button"
+          role="tab" aria-controls="test3" aria-selected="false">Hombre</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link text-white" id="test4-tab" data-bs-toggle="tab" data-bs-target="#test4" type="button"
+          role="tab" aria-controls="test4" aria-selected="false">Mujer</button>
+      </li>
+    </ul>
+    <div class="tab-content mr-0" id="myTabContent">
+      <div class="tab-pane fade show active" id="test1" role="tabpanel" aria-labelledby="test1-tab">
         <div class="row">
-            <div class="col s12 m7 l4">
-              <div class="card medium">
-                <div class="card-image">
-                  <img src="{%static 'store/img/pulsera.jpg' %}">
-                  <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
+          <!-- Aquí va el contenido de la sección Mas Vendido -->
+          <div class="container mt-5">
+            <div class="row justify-content-center">
+              <div class="col-sm-6 col-md-3">
+                <div class="card">
+                  <!-- Contenido de la tarjeta -->
+                  <img src="{% static 'store/img/Anillo_plata.jpg' %}" class="card-img-top" alt="promocion">
+                  <div class="card-body">
+                    <h5 class="card-title">Nombre del artículo</h5>
+                    <p class="card-text">Descripción del artículo.</p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-    </div>
-
-    <div id="test4" class="container section">
+        <br>
+      </div>
+      <div class="tab-pane fade" id="test2" role="tabpanel" aria-labelledby="test2-tab">
         <div class="row">
-            <div class="col s12 m7 l4">
-              <div class="card medium">
-                <div class="card-image">
-                  <img src="{%static 'store/img/pulsera.jpg' %}">
-                  <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
+          <!-- Aquí va el contenido de la sección Promociones -->
+          <div class="container mt-5">
+            <div class="row justify-content-center">
+              <div class="col-sm-6 col-md-3">
+                <div class="card">
+                  <!-- Contenido de la tarjeta -->
+                  <img src="{% static 'store/img/Anillo_plata.jpg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nombre del artículo</h5>
+                    <p class="card-text">Descripción del artículo.</p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <br>
+      </div>
+      <div class="tab-pane fade" id="test3" role="tabpanel" aria-labelledby="test3-tab">
+        <div class="row">
+          <!-- Aquí va el contenido de la sección Hombre -->
+          <div class="container mt-5">
+            <div class="row justify-content-center">
+              <div class="col-sm-6 col-md-3">
+                <div class="card">
+                  <!-- Contenido de la tarjeta -->
+                  <img src="{% static 'store/img/Anillo_plata.jpg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nombre del artículo</h5>
+                    <p class="card-text">Descripción del artículo.</p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <div class="tab-pane fade" id="test4" role="tabpanel" aria-labelledby="test4-tab">
+        <div class="row">
+          <!-- Aquí va el contenido de la sección Mujer -->
+          <div class="container mt-5">
+            <div class="row justify-content-center">
+              <div class="col-sm-6 col-md-3">
+                <div class="card">
+                  <!-- Contenido de la tarjeta -->
+                  <img src="{% static 'store/img/Anillo_plata.jpg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Nombre del artículo</h5>
+                    <p class="card-text">Descripción del artículo.</p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
     </div>
+  </div>
+
+
+  <!--   Icon Section   -->
+  <div class="container mt-5 ">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="text-center">
+          <h2 class="teal-text">
+            <img src="{% static 'store/img/joyeri-a.png' %}" alt="productos" id="icono-index">
+          </h2>
+          <h5 class="text-center">Atractivos productos</h5>
+          <p class="text-center">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque
+            reiciendis
+            voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur
+            nam, rem
+            debitis officia nesciunt.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="text-center">
+          <h2 class="teal-text">
+            <img src="{% static 'store/img/mundo.png' %}" alt="comunidad" id="icono-index">
+          </h2>
+          <h5 class="text-center">Amplia comunidad</h5>
+          <p class="text-center">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque
+            reiciendis
+            voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur
+            nam, rem
+            debitis officia nesciunt.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="text-center">
+          <h2 class="teal-text">
+            <img src="{% static 'store/img/seguro-de-hogar.png' %}" alt="seguro-hogar" id="icono-index">
+          </h2>
+          <h5 class="text-center">Plataforma robusta</h5>
+          <p class="text-center">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque
+            reiciendis
+            voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur
+            nam, rem
+            debitis officia nesciunt.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Parallax -->
+  <!-- Imagen 0 -->
+  <div id="parrallax-imagen-0">
+    <div class="row h-100 x">
+      <div class="col-md-12 align-self-center">
+      </div>
+    </div>
+  </div>
+
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h3><i class="fas fa-paper-plane text-brown"></i></h3>
+        <h3>Vive la experiencia</h3>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id
+          nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut
+          ultricies
+          eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque,
+          posuere et
+          pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl
+          maximus sed.
+          Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices
+          erat. Nullam
+          eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus
+          et ultrices
+          posuere cubilia Curae;</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Imagen 1 -->
+  <div id="parrallax-imagen-1">
+    <div class="row h-100 x">
+      <div class="col-md-12 align-self-center">
+      </div>
+    </div>
+  </div>
+
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h3><i class="fas fa-paper-plane text-brown"></i></h3>
+        <h3>Vive la experiencia</h3>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id
+          nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut
+          ultricies
+          eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque,
+          posuere et
+          pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl
+          maximus sed.
+          Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices
+          erat. Nullam
+          eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus
+          et ultrices
+          posuere cubilia Curae;</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Imagen 2 -->
+  <div id="parrallax-imagen-2">
+    <div class="row h-100 x">
+      <div class="col-md-12 align-self-center">
+      </div>
+    </div>
+  </div>
+
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h3><i class="fas fa-paper-plane text-brown"></i></h3>
+        <h3>Vive la experiencia</h3>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id
+          nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut
+          ultricies
+          eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque,
+          posuere et
+          pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl
+          maximus sed.
+          Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices
+          erat. Nullam
+          eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus
+          et ultrices
+          posuere cubilia Curae;</p>
+      </div>
+    </div>
+  </div>
 
 
 
+  {% endblock content %}
 
-    {% endblock content %}
 
 </body>

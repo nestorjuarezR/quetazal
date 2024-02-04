@@ -5,128 +5,205 @@
 
     {% block content %}
     <div class="container">
-
-
-        {% if articulo.tags.all  %}
-
-        <h5>Tags:
-            {% for tag in articulo.tags.all %}
-            <a href="{% url 'tag_listado' tag.slug %}" class="chip">{{ tag.name }}</a>
-            {% endfor %}
-        </h5>
-
-        <div class="divider"></div>
-
-        {% endif %}
-
-
-
-
-
-
-        <div class="product-details">
-            <div class="row ">
-                <div class="col l6 m6 s12">
-                    <img class="responsive-img materialboxed" width="650" src="{{ articulo.imagen.url }}"
-                        alt="imagen_producto">
-                </div>
-                <div class="col l6 m6 s12">
-                    <div class="valign">
-                        <h5 class="center-align">{{ articulo.titulo|capfirst }}</h5>
-                        <br>
-                        <hr>
-                        <br>
-                        <p>{{ articulo.descripcion }}</p>
-                        <p>Precio: ${{ articulo.precio }}</p>
-                        <p class="grey-text text-lighten-1">SKU: 1697</p>
-                        <div class="col s12 m6 l6 valign-wrapper ">
-                            <label for="select" class="black-text">Cantidad</label>
-                            <select id="select" class="browser-default">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                        <div class="col s12 m6 l6 valign-wrapper">
-                            <a class="waves-effect waves-light btn"><i
-                                    class="material-icons right">add_shopping_cart</i>Agregar </a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-
-
-
-        <!-- Iconos -->
-        <div class="divider"></div>
-        <div class="section row">
-            <div class="col l12 m12 s12">
-                <div class="col l3 m6 s6  center-align">
-                    <i class="medium material-icons green-text">where_to_vote</i>
-                    <p>100 % Plata mexicana</p>
-                </div>
-                <div class="col l3  m6 s6 center-align">
-                    <i class="medium material-icons black-text">
-                        <span class="material-symbols">
-                            volunteer_activism
-                        </span></i>
-                    <p>Hecho con manos mexicanas</p>
-                </div>
-                <div class="col l3 m6 s6 center-align">
-                    <i class="medium material-icons teal-text text-darken-3">
-                        <span class="material-symbols-outlined">
-                            credit_score
-                        </span>
-                    </i>
-                    <p>Compras seguras</p>
-                </div>
-                <div class="col l3 m6 s6 center-align">
-                    <i class="medium material-icons teal-text text-darken-3">
-                        <span class="material-symbols-outlined">
-                            credit_score
-                        </span>
-                    </i>
-                    <p>Compras seguras</p>
-                </div>
-            </div>
-        </div>
-        <div class="divider"></div>
-
-
-        <h4>Productos relacionados</h4>
         <div class="row">
-            <div class="col l12">
 
-                {% for articulo in articulos_similares %}
-                <div class="col s12 m6 l4">
-                    <div class="card medium hoverable">
-                        <div class="card-image">
-                            <img class="responsive-img" id="card-image" src="{{ articulo.imagen.url }}">
+            {% if articulo.tags.all %}
+            <div class="col-md-12 mt-5">
+                <div class="d-flex align-items-center">
+                    <h5 class="me-2">Tags:</h5>
+                    <div class="tag-section d-flex">
+                        {% for tag in articulo.tags.all%}
+                        <a href="{% url 'tag_listado' tag.slug %}"
+                            class="badge bg-secondary m-1 text-decoration-none">{{ tag.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <hr>
+
+
+
+
+
+
+        <main class="pt-5">
+            <div class="row g-3">
+                <div class="col-md-5 col-lg-5 order-md-first bg-light">
+                    <img class="img-fluid mx-auto d-block" alt="Articulo imagen" src="{{ articulo.imagen.url }}">
+                    <!-- Product image -->
+                </div>
+                <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
+                    <h1 class="mb-0 h4"> {{ articulo.titulo }} </h1>
+                    <strong> Marca </strong>
+                    <p class="text-secondary">Sku: {{articulo.sku }}</p>
+                    <hr>
+                    <br>
+                    <h5>Descripción</h5>
+                    <p> {{ articulo.descripcion }} </p>
+                    <div class="border">
+                        <div class="col border-bottom">
+                            <div class="row p-3">
+                                <div class="col-6"> Precio </div>
+                                <div class="col-6 text-end"><span class="h4 fw-bold">$ {{articulo.precio}} MXN</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class=" card-content">
-                            <span class=" card-title">{{articulo.titulo|truncatewords:10}}</span>
-                        </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-light btn" href="{{ articulo.get_absolute_url }}">Entrar</a>
+                        <div class="col">
+                            <div class="row p-3 align-items-center">
+                                <div class="col-6">
+
+                                    <label for="select">Cantidad</label>
+
+                                    &nbsp;
+
+                                    <select id="select">
+
+                                        <option value="1">1</option>
+
+                                        <option value="2">2</option>
+
+                                        <option value="3">3</option>
+
+                                        <option value="4">4</option>
+
+                                    </select>
+
+                                </div>
+                                <div class="col-6 d-flex justify-content-end align-items-center">
+                                    <!-- Agregar al carrito -->
+                                    <button type="button" id="liveToastBtn" value="{{ articulo.id }}"
+                                        class="btn btn-secondary btn-sm me-2 ">Agregar al carrito</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                {% empty %}
-                <p>No hay articulos relacionados</p>
-                {% endfor %}
+            </div>
+        </main>
 
 
+
+        <!-- Seccion de iconos -->
+        <br>
+        <hr>
+
+        <div class="row mt-4">
+            <div class="col-md-3 text-center">
+                <img src="{% static 'store/img/mexico.png' %}" alt="mexico" id="icono">
+
+                <p>100 % Plata mexicana</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="{% static 'store/img/artesania.png' %}" alt="hecho-a-mano" id="icono">
+                <p>Hecho con manos mexicanas</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="{% static 'store/img/metodo-de-pago.png' %}" alt="metodo-pago" id="icono">
+                <p>Compras seguras</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="{% static 'store/img/joyeria.png' %}" alt="cuidados" id="icono">
+                <!-- Button trigger modal -->
+                <p>
+                    <button type="button" id="modal" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#modal1">
+                        Cuidados
+                    </button>
+                </p>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Cuidados</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    • Pulir la pieza con brazo o cualquier crema especializada en joyería.
+                                    <br>• Evitar impactos en piezas con montadura de piedras ya que estos pueden
+                                    dañar los postes que la sujetan y separar la piedra de la pieza.
+                                    <br>• Los brazaletes con bisagra siempre deben de meterse de forma lateral a la
+                                    muñeca, nunca se debe de atravesar la mano completa por la pieza ya que está
+                                    forzada la apertura de la bisagra y puede provocar un vencimiento de la misma.
+                                    <br>• Se debe procurar en el caso de los aretes Huggies, siempre estar alineado
+                                    el poste con el broche ya que de lo contrario se encuentra en una posición más
+                                    baja o alta, este no sellará bien y se puede extraviar la pieza.
+                                    <br>• El mar por su alto contenido en sodio y albercas por uso de químicos,
+                                    pueden llegar a ser muy corrosivo, se recomienda retirar la joyería antes de
+                                    sumergirse para poder prolongar el acabado pulido de las piezas.
+                                    <br>• Evitar poner perfume o crema encima de las joyas es crucial para
+                                    mantenerlas intactas por más tiempo.
+                                    <br>• Almacena tu joyería en un lugar fresco y seco, que sea lo más hermético
+                                    posible para evitar que entre aire y dar paso a la oxidación de nuestras piezas
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">De
+                                    acuerdo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <hr>
+
+        <!-- Articulos relacionados -->
+
+        <div class="row gx-5  mb-5">
+            <h4 class="mb-4 mt-5">Articulos relacionados</h4>
+            {% for articulo in articulos_similares %}
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ articulo.imagen.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ articulo.titulo }}</h5>
+                        <a href="{{ articulo.slug }}" class="btn btn-success">Entrar</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No hay articulos relacionados</p>
+            {% endfor %}
+
+        </div>
+    </div>
 
 
     </div>
 
+
+    <script>
+        $(document).on('click', '#liveToastBtn', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '{% url "cart-add" %}',
+                data: {
+                    product_id: $('#liveToastBtn').val(),
+                    product_quantity: $('#select option:selected').text(),
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                    action: 'post'
+                },
+                success: function (json) {
+                    console.log(json);
+                    document.getElementById("cart-qty").textContent = json.qty;
+                },
+                error: function (xhr, errmsg, err) {
+                    console.log("Error:", errmsg);
+                },
+            });
+        });
+    </script>
     {% endblock content %}
+
 
 </body>

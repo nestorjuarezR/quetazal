@@ -30,6 +30,7 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls')),
+    path('cart/', include('cart.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ] 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

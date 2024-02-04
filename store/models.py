@@ -23,14 +23,13 @@ class Categoria(models.Model):
         DESACTIVADA = 'DT', 'Desactivada'
         ACTIVA = 'AT', 'Activa'
 
-    titulo = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250)
+    titulo = models.CharField(max_length=250, blank=False)
+    slug = models.SlugField(max_length=250, blank=False)
     status = models.CharField(max_length=2,
                                                 choices = Status.choices,
                                                 default = Status.ACTIVA)
     imagen = models.ImageField(upload_to='categorias',
-                                                            blank=True,
-                                                            null=True)
+                                                            blank=False)
     creacion = models.DateTimeField(auto_now_add=True)
     
     objects = models.Manager()   #Manager por defecto
@@ -53,17 +52,17 @@ class Articulo(models.Model):
     categoria = models.ForeignKey(Categoria,
                                                                     on_delete = models.CASCADE,
                                                                     related_name = 'categoria')
-    titulo = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250)
-    descripcion = models.CharField(max_length=240)
-    precio = models.IntegerField()
+    titulo = models.CharField(max_length=250, blank=False)
+    slug = models.SlugField(max_length=250, blank=False)
+    descripcion = models.CharField(max_length=240, blank=False)
+    precio = models.IntegerField(blank=False)
+    sku = models.CharField(max_length=50, unique=True, blank=False)  # Añadir esta línea para el SKU
     imagen = models.ImageField(upload_to='articulos',
                                                             default='articulos/articulo.jpg',
-                                                            blank=True,
-                                                            null=True)
-    tags = TaggableManager(blank=True)
-    disponible = models.BooleanField(default=True)
-    creacion = models.DateTimeField(auto_now_add=True)
+                                                            blank=False)
+    tags = TaggableManager(blank=False)
+    disponible = models.BooleanField(default=True, blank=False)
+    creacion = models.DateTimeField(auto_now_add=True, blank=False)
 
 
     class Meta:

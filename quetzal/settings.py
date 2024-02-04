@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'store.apps.StoreConfig',
-    'taggit',                #Sistema de Tags
+    'store.apps.StoreConfig',     #Store App
+    'cart.apps.CartConfig',         #Cart App
+    'taggit',                                      #Sistema de Tags
     'django.contrib.sites',
     'django.contrib.sitemaps',
 ]
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
