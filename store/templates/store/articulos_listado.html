@@ -17,7 +17,7 @@
                     <div class="card mb-5"">
                         <img class="card-img-top" src="{{ item.imagen.url }}" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{ item.titulo }}</h5>
+                            <h5 class="card-title">{{ item.titulo|capfirst }}</h5>
                             <a href="{{ item.get_absolute_url }}" class="btn btn-success">Entrar</a>
                         </div>
                     </div>

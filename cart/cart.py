@@ -63,3 +63,5 @@ class Cart():
         if product_id in self.cart:
             self.cart[product_id]['qty'] = product_quantity
         self.session.modified = True
+
+   

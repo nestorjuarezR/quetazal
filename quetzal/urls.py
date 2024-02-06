@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 from django.contrib.sitemaps.views import sitemap
 from store.sitemaps import CategoriaSitemap, ArticuloSitemap
+from store.views import custom_404_view, custom_500_view
 
 sitemaps = {
     'categoria': CategoriaSitemap,
@@ -35,3 +36,6 @@ urlpatterns = [
 ] 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = custom_404_view
+handler500 = custom_500_view

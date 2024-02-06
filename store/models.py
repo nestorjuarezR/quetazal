@@ -79,3 +79,9 @@ class Articulo(models.Model):
     objects = models.Manager()   #Manager por defecto
     disponibles = ArticuloManager() #Custom manager
 
+class ImagenProducto(models.Model):
+    imagen = models.ImageField(upload_to='articulos')
+    articulo = models.ForeignKey(Articulo, 
+                                                                on_delete=models.CASCADE,
+                                                                related_name='imagenes')
+

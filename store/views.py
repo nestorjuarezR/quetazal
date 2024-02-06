@@ -56,3 +56,22 @@ def tag_listado(request, tag_slug=None):
                                 {'tag': tag,
                                  'articulos': articulos_list})
 
+
+
+def custom_404_view(request, exception):
+    return render(request, 'store/404.html', status=404)
+
+def custom_500_view(request):
+    return render('store/500.html', status=500)
+
+def robots(request):
+    return render(request, 
+                  'store/txt/robots.txt', 
+                  content_type='text/plain',
+                  context={'domain_url': "https://www.tudiamastriste.com"})
+
+
+def security(request):
+    return render(request,
+                  'store/txt/security.txt',
+                  content_type="text/plain")

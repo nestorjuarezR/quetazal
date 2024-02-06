@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .cart import Cart
 from store.models import Articulo
 from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -49,3 +50,13 @@ def cart_update(request):
         cart_total = cart.get_total()
         response = JsonResponse({ 'qty' : cart_quantity, 'total': cart_total})
         return response
+    
+
+
+def limpiar_carrito(request):
+    if request.method == 'POST':
+        # Elimina todos los elementos del carrito
+        request.session['cart'] = {}
+        return JsonResponse({'message': 'Carrito limpiado exitosamente'})
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
