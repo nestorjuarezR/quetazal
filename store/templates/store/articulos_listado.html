@@ -4,18 +4,18 @@
 <body>
 
     {% block content %}
-    <div class="container section">
-        <h3 class="mt-4 mb-2">{{ categoria.titulo| capfirst}}</h3>
+    <main class="container section">
+        <h3 class="mt-4 mb-2">{{ categoria.titulo|capfirst }}</h3>
         <hr>
         <br>
 
-        <!-- Tarjeta de presentacion de articulos -->
+        <!-- Tarjeta de presentación de artículos -->
         <div class="container mb-5">
             <div class="row gx-5">
                 {% for item in articulos %}
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="card mb-5"">
-                        <img class="card-img-top" src="{{ item.imagen.url }}" alt="Card image cap">
+                    <div class="card mb-5">
+                        <img class="card-img-top" src="{{ item.imagen.url }}" alt="{{ item.titulo }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ item.titulo|capfirst }}</h5>
                             <a href="{{ item.get_absolute_url }}" class="btn btn-success">Entrar</a>
@@ -23,11 +23,12 @@
                     </div>
                 </div>
                 {% empty %}
-                <p>No hay articulos registrados en el sistema</p>
+                <p>No hay artículos registrados en el sistema</p>
                 {% endfor %}
             </div>
         </div>
-    </div>
+    </main>
+
     {% endblock %}
 
 </body>

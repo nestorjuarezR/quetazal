@@ -1,7 +1,7 @@
 {% extends 'store/base.html' %}
 {% load static %}
 
-<body>
+<body class="vh-100">
 
   {% block Header %}
   <!-- Slider -->
@@ -50,6 +50,7 @@
   </div>
   {% endblock Header %}
 
+
   {% block content %}
 
 
@@ -77,14 +78,15 @@
     </ul>
     <div class="tab-content mr-0" id="myTabContent">
       <div class="tab-pane fade show active" id="test1" role="tabpanel" aria-labelledby="test1-tab">
-        <div class="row">
+        <div class="row text-center">
           <!-- Aquí va el contenido de la sección Mas Vendido -->
+
           <div class="container mt-5">
             <div class="row justify-content-center">
-              <div class="col-sm-6 col-md-3">
+              <div class="col-sm-6 col-md-3 text-center">
                 <div class="card">
                   <!-- Contenido de la tarjeta -->
-                  <img src="{% static 'store/img/Anillo_plata.jpg' %}" class="card-img-top" alt="promocion">
+                  <img src="{% static 'store/img/Anillo_plata.jpg' %}" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">Nombre del artículo</h5>
                     <p class="card-text">Descripción del artículo.</p>
@@ -97,12 +99,14 @@
         </div>
         <br>
       </div>
+
+
       <div class="tab-pane fade" id="test2" role="tabpanel" aria-labelledby="test2-tab">
-        <div class="row">
+        <div class="row justify-content-center">
           <!-- Aquí va el contenido de la sección Promociones -->
           <div class="container mt-5">
             <div class="row justify-content-center">
-              <div class="col-sm-6 col-md-3">
+              <div class="col-sm-6 col-md-3 text-center">
                 <div class="card">
                   <!-- Contenido de la tarjeta -->
                   <img src="{% static 'store/img/Anillo_plata.jpg' %}" class="card-img-top" alt="...">
@@ -163,59 +167,45 @@
     </div>
   </div>
 
-
-  <!--   Icon Section   -->
-  <div class="container mt-5 ">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="text-center">
-          <h2 class="teal-text">
-            <img src="{% static 'store/img/joyeri-a.png' %}" alt="productos" id="icono-index">
-          </h2>
-          <h5 class="text-center">Atractivos productos</h5>
-          <p class="text-center">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque
-            reiciendis
-            voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur
-            nam, rem
-            debitis officia nesciunt.
-          </p>
-        </div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="text-center">
+        <h2 class="teal-text">
+          <img src="{% static 'store/img/joyeri-a.png' %}" alt="productos" id="icono-index">
+        </h2>
+        <h5>Atractivos productos</h5>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque reiciendis voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur nam, rem debitis officia nesciunt.
+        </p>
       </div>
+    </div>
 
-      <div class="col-md-4">
-        <div class="text-center">
-          <h2 class="teal-text">
-            <img src="{% static 'store/img/mundo.png' %}" alt="comunidad" id="icono-index">
-          </h2>
-          <h5 class="text-center">Amplia comunidad</h5>
-          <p class="text-center">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque
-            reiciendis
-            voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur
-            nam, rem
-            debitis officia nesciunt.
-          </p>
-        </div>
+    <div class="col-md-4">
+      <div class="text-center">
+        <h2 class="teal-text">
+          <img src="{% static 'store/img/mundo.png' %}" alt="comunidad" id="icono-index">
+        </h2>
+        <h5>Amplia comunidad</h5>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque reiciendis voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur nam, rem debitis officia nesciunt.
+        </p>
       </div>
+    </div>
 
-      <div class="col-md-4">
-        <div class="text-center">
-          <h2 class="teal-text">
-            <img src="{% static 'store/img/seguro-de-hogar.png' %}" alt="seguro-hogar" id="icono-index">
-          </h2>
-          <h5 class="text-center">Plataforma robusta</h5>
-          <p class="text-center">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque
-            reiciendis
-            voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur
-            nam, rem
-            debitis officia nesciunt.
-          </p>
-        </div>
+    <div class="col-md-4">
+      <div class="text-center">
+        <h2 class="teal-text">
+          <img src="{% static 'store/img/seguro-de-hogar.png' %}" alt="seguro-hogar" id="icono-index">
+        </h2>
+        <h5>Plataforma robusta</h5>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit tempora corporis, neque reiciendis voluptatem commodi, deserunt alias quis repellat quaerat eligendi ducimus illo facilis tenetur nam, rem debitis officia nesciunt.
+        </p>
       </div>
     </div>
   </div>
+</div>
 
 
   <!-- Parallax -->

@@ -6,13 +6,12 @@
     {% block content %}
     <div class="container">
         <div class="row">
-
             {% if articulo.tags.all %}
             <div class="col-md-12 mt-5">
                 <div class="d-flex align-items-center">
                     <h5 class="me-2">Tags:</h5>
                     <div class="tag-section d-flex">
-                        {% for tag in articulo.tags.all%}
+                        {% for tag in articulo.tags.all %}
                         <a href="{% url 'tag_listado' tag.slug %}"
                             class="badge bg-secondary m-1 text-decoration-none">{{ tag.name }}</a>
                         {% endfor %}
@@ -23,11 +22,6 @@
         </div>
         <hr>
 
-
-
-
-
-
         <main class="pt-5">
             <div class="row g-3">
                 <div class="col-md-5 col-lg-5 order-md-first bg-light">
@@ -35,18 +29,18 @@
                     <!-- Product image -->
                 </div>
                 <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
-                    <h1 class="mb-0 h4"> {{ articulo.titulo|capfirst }} </h1>
-                    <strong> Marca </strong>
-                    <p class="text-secondary">Sku: {{articulo.sku }}</p>
+                    <h1 class="mb-0 h4">{{ articulo.titulo|capfirst }}</h1>
+                    <strong>Marca</strong>
+                    <p class="text-secondary">Sku: {{ articulo.sku }}</p>
                     <hr>
                     <br>
                     <h5>Descripción</h5>
-                    <p> {{ articulo.descripcion|capfirst }} </p>
+                    <p>{{ articulo.descripcion|capfirst }}</p>
                     <div class="border">
                         <div class="col border-bottom">
                             <div class="row p-3">
-                                <div class="col-6"> Precio </div>
-                                <div class="col-6 text-end"><span class="h4 fw-bold">$ {{articulo.precio}} MXN</span>
+                                <div class="col-6">Precio</div>
+                                <div class="col-6 text-end"><span class="h4 fw-bold">$ {{ articulo.precio }} MXN</span>
                                 </div>
                             </div>
                         </div>
@@ -65,18 +59,18 @@
                                 <div class="col-6 d-flex justify-content-end align-items-center">
                                     <!-- Agregar al carrito -->
                                     <button type="button" id="liveToastBtn" value="{{ articulo.id }}"
-                                        class="btn btn-secondary btn-sm me-2 ">Agregar al carrito</button>
+                                        class="btn btn-secondary btn-sm me-2">Agregar al carrito</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- Additional product images outside of the .row.g-3 container -->
 
             <div class="row mt-3">
                 {% for m in articulo.imagenes.all %}
-
                 <div class="col-md-4">
                     <img class="img-fluid mx-auto d-block mb-2 mt-1" alt="Articulo imagen" src="{{ m.imagen.url }}">
                     <!-- Additional product image 1 -->
@@ -95,24 +89,17 @@
                         <strong class="me-auto">Notificación</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
-                    <div class="toast-body">
-                        El articulo se añadio a tu carrito de compras
-                    </div>
+                    <div class="toast-body">El articulo se añadió a tu carrito de compras</div>
                 </div>
             </div>
         </main>
 
-
-
-
         <!-- Seccion de iconos -->
-        <br>
         <hr>
 
         <div class="row mt-4">
             <div class="col-md-3 text-center">
                 <img src="{% static 'store/img/mexico.png' %}" alt="mexico" id="icono">
-
                 <p>100 % Plata mexicana</p>
             </div>
             <div class="col-md-3 text-center">
@@ -128,9 +115,7 @@
                 <!-- Button trigger modal -->
                 <p>
                     <button type="button" id="modal" class="btn btn-outline-success" data-bs-toggle="modal"
-                        data-bs-target="#modal1">
-                        Cuidados
-                    </button>
+                        data-bs-target="#modal1">Cuidados</button>
                 </p>
 
                 <!-- Modal -->
@@ -145,22 +130,22 @@
                             </div>
                             <div class="modal-body">
                                 <p>
-                                    • Pulir la pieza con brazo o cualquier crema especializada en joyería.
-                                    <br>• Evitar impactos en piezas con montadura de piedras ya que estos pueden
-                                    dañar los postes que la sujetan y separar la piedra de la pieza.
-                                    <br>• Los brazaletes con bisagra siempre deben de meterse de forma lateral a la
-                                    muñeca, nunca se debe de atravesar la mano completa por la pieza ya que está
-                                    forzada la apertura de la bisagra y puede provocar un vencimiento de la misma.
-                                    <br>• Se debe procurar en el caso de los aretes Huggies, siempre estar alineado
-                                    el poste con el broche ya que de lo contrario se encuentra en una posición más
-                                    baja o alta, este no sellará bien y se puede extraviar la pieza.
-                                    <br>• El mar por su alto contenido en sodio y albercas por uso de químicos,
-                                    pueden llegar a ser muy corrosivo, se recomienda retirar la joyería antes de
-                                    sumergirse para poder prolongar el acabado pulido de las piezas.
-                                    <br>• Evitar poner perfume o crema encima de las joyas es crucial para
-                                    mantenerlas intactas por más tiempo.
-                                    <br>• Almacena tu joyería en un lugar fresco y seco, que sea lo más hermético
-                                    posible para evitar que entre aire y dar paso a la oxidación de nuestras piezas
+                                    • Pulir la pieza con brazo o cualquier crema especializada en joyería.<br>
+                                    • Evitar impactos en piezas con montadura de piedras ya que estos pueden dañar los
+                                    postes que la sujetan y separar la piedra de la pieza.<br>
+                                    • Los brazaletes con bisagra siempre deben de meterse de forma lateral a la muñeca,
+                                    nunca se debe de atravesar la mano completa por la pieza ya que está forzada la
+                                    apertura de la bisagra y puede provocar un vencimiento de la misma.<br>
+                                    • Se debe procurar en el caso de los aretes Huggies, siempre estar alineado el poste
+                                    con el broche ya que de lo contrario se encuentra en una posición más baja o alta,
+                                    este no sellará bien y se puede extraviar la pieza.<br>
+                                    • El mar por su alto contenido en sodio y albercas por uso de químicos, pueden
+                                    llegar a ser muy corrosivo, se recomienda retirar la joyería antes de sumergirse
+                                    para poder prolongar el acabado pulido de las piezas.<br>
+                                    • Evitar poner perfume o crema encima de las joyas es crucial para mantenerlas
+                                    intactas por más tiempo.<br>
+                                    • Almacena tu joyería en un lugar fresco y seco, que sea lo más hermético posible
+                                    para evitar que entre aire y dar paso a la oxidación de nuestras piezas
                                 </p>
                             </div>
                             <div class="modal-footer">
@@ -173,14 +158,11 @@
             </div>
         </div>
 
-
-
         <hr>
 
-        <!-- Articulos relacionados -->
-
-        <div class="row gx-5  mb-5">
-            <h4 class="mb-4 mt-5">Articulos relacionados</h4>
+        <!-- Artículos relacionados -->
+        <div class="row gx-5 mb-5">
+            <h4 class="mb-4 mt-5">Artículos relacionados</h4>
             {% for articulo in articulos_similares %}
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card">
@@ -192,14 +174,11 @@
                 </div>
             </div>
             {% empty %}
-            <p>No hay articulos relacionados</p>
+            <p>No hay artículos relacionados</p>
             {% endfor %}
-
         </div>
     </div>
 
-
-    </div>
 
 
     <script>

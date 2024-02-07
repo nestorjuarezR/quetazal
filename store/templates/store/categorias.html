@@ -4,12 +4,9 @@
 <body>
 
     {% block content %}
-
-    <!-- Categorias -->
-
-    <div class="container section">
+    <main class="container section">
         <br>
-        <h1>Categorias</h1>
+        <h1>Categorías</h1>
         <hr>
         <br>
 
@@ -18,7 +15,7 @@
                 {% for info in categorias %}
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card mb-5">
-                        <img class="card-img-top" src="{{ info.imagen.url }}" alt="Card image cap">
+                        <img class="card-img-top" src="{{ info.imagen.url }}" alt="{{ info.titulo }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ info.titulo|capfirst }}</h5>
                             <a href="{{ info.get_absolute_url }}" class="btn btn-success">Entrar</a>
@@ -26,12 +23,12 @@
                     </div>
                 </div>
                 {% empty %}
-                <p>No hay categorias registradas en el sistema</p>
+                <p>No hay categorías registradas en el sistema</p>
                 {% endfor %}
             </div>
         </div>
-    </div>
-    <br>
+    </main>
+
     {% endblock %}
 
 </body>

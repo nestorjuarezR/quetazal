@@ -12,10 +12,6 @@
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="fw-normal mb-0 text-black">Carrito de compras</h3>
-                        <div>
-                            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
-                                    class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
-                        </div>
                     </div>
                     <hr>
 
@@ -27,19 +23,19 @@
                     <div class="card rounded-3 mb-4" data-product-id="{{ articulo.id }}">
                         <div class="card-body p-4">
                             <div class="row d-flex justify-content-between align-items-center">
-                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                <div class="col-md-2 col-lg-2 col-xl-2 col-sm-6 text-center">
                                     <a href="">
                                         <img src="{{ articulo.imagen.url }}" class="img-fluid rounded-3"
                                             alt="Imagen_Producto">
                                     </a>
 
                                 </div>
-                                <div class="col-md-2 col-lg-2 col-xl-3 mb-2 mt-2">
+                                <div class="col-md-2 col-lg-2 col-xl-3 col-sm-6 mb-2 mt-2 text-center">
                                     <a class="lead fw-normal mb-2 text-info text-reset text-decoration-none"
                                         href="{{ articulo.get_absolute_url}}">{{ articulo.titulo }}</a>
                                 </div>
                                 <!-- Actualizar cantidad del articulo -->
-                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex mb-2 mr-2">
+                                <div class="col-md-3 col-lg-3 col-xl-2 col-sm-6  mb-2 mr-2 text-center">
                                     <p><span class="text-muted">Cantidad: </span>
                                         <select id="select{{ articulo.id }}">
 
@@ -61,14 +57,14 @@
                                     </a>
                                 </div>
                                 <td>
-                                    <div class="col-md-1 col-lg-1 col-xl-1 offset-lg-1 delete-button  mb-2 mt-2"
+                                    <div class="col-md-1 col-lg-1 col-xl-1  offset-lg-1  col-sm-6 delete-button  mb-2 mt-2 text-center"
                                         data-index="{{ articulo.id }}">
                                         <a type="button" role="button">
                                             <i class="bi bi-trash3"></i>
                                         </a>
                                     </div>
 
-                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                    <div class="col-md-3 col-lg-2 col-xl-2  col-sm-6 offset-lg-1 text-center">
                                         <h5 class="mb-0">$ {{ articulo.precio }}</h5>
                                     </div>
                             </div>
@@ -81,9 +77,12 @@
 
 
                     <div class="card">
-                        <div class="card-body">
-                            <div class="card-body d-flex justify-content-between align-items-center">
+                        <div class="card-body row">
+                            <div class="card-body col-sm-6 col-md-6 col-lg-6 text-center">
                                 <h4 class="m-0" id="total">Total: ${{ cart.get_total }}</h4>
+                                </a>
+                            </div>
+                            <div class="card-body col-sm-6 col-md-6 col-lg-6 text-center">
                                 <a href="#" class="btn btn-warning btn-block btn-lg" id="complete-order"> Proceder al pago
                                 </a>
                             </div>
