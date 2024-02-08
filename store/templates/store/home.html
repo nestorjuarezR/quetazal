@@ -67,14 +67,6 @@
         <button class="nav-link text-white" id="test2-tab" data-bs-toggle="tab" data-bs-target="#test2" type="button"
           role="tab" aria-controls="test2" aria-selected="false">Promociones</button>
       </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link text-white" id="test3-tab" data-bs-toggle="tab" data-bs-target="#test3" type="button"
-          role="tab" aria-controls="test3" aria-selected="false">Hombre</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link text-white" id="test4-tab" data-bs-toggle="tab" data-bs-target="#test4" type="button"
-          role="tab" aria-controls="test4" aria-selected="false">Mujer</button>
-      </li>
     </ul>
     <div class="tab-content mr-0" id="myTabContent">
       <div class="tab-pane fade show active" id="test1" role="tabpanel" aria-labelledby="test1-tab">
@@ -90,7 +82,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Nombre del artículo</h5>
                     <p class="card-text">Descripción del artículo.</p>
-                    <a href="#" class="btn btn-primary">Ver más</a>
+                    <a href="{% url 'categorias' %}" class="btn btn-primary">Ver más</a>
                   </div>
                 </div>
               </div>
@@ -113,49 +105,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Nombre del artículo</h5>
                     <p class="card-text">Descripción del artículo.</p>
-                    <a href="#" class="btn btn-primary">Ver más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
-      </div>
-      <div class="tab-pane fade" id="test3" role="tabpanel" aria-labelledby="test3-tab">
-        <div class="row">
-          <!-- Aquí va el contenido de la sección Hombre -->
-          <div class="container mt-5">
-            <div class="row justify-content-center">
-              <div class="col-sm-6 col-md-3">
-                <div class="card">
-                  <!-- Contenido de la tarjeta -->
-                  <img src="{% static 'store/img/Anillo_plata.jpg' %}" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre del artículo</h5>
-                    <p class="card-text">Descripción del artículo.</p>
-                    <a href="#" class="btn btn-primary">Ver más</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
-      </div>
-      <div class="tab-pane fade" id="test4" role="tabpanel" aria-labelledby="test4-tab">
-        <div class="row">
-          <!-- Aquí va el contenido de la sección Mujer -->
-          <div class="container mt-5">
-            <div class="row justify-content-center">
-              <div class="col-sm-6 col-md-3">
-                <div class="card">
-                  <!-- Contenido de la tarjeta -->
-                  <img src="{% static 'store/img/Anillo_plata.jpg' %}" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre del artículo</h5>
-                    <p class="card-text">Descripción del artículo.</p>
-                    <a href="#" class="btn btn-primary">Ver más</a>
+                    <a href="{% url 'categorias' %}" class="btn btn-primary">Ver más</a>
                   </div>
                 </div>
               </div>
